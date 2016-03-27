@@ -1,0 +1,85 @@
+{
+	"manifest_version": "1",
+	"type": "WebApp",
+	"meta":{
+		"name": "CS:GO Stats",
+		"version": "1.0.2.5",
+		"minimum-overwolf-version": "0.87.55.0",
+		"author": "CSGO-Stats",
+		"icon": "IconMouseOver.png",
+		"icon_gray": "IconMouseNormal.png",
+		"description": "Find out players' extended stats with CSGO Stats and get an edge over the competition!"
+	},
+	"in-game-plugin": "CSGOInGamePlugin.dll",
+	"channel-id": 1007764,
+	"permissions": [
+		"Hotkeys",
+		"GameInfo",
+		"GameControl",
+		"Clipboard"
+	],
+	"data": {
+		"start_window": "index",
+		"externally_connectable": {
+			"matches": [
+				"http://188.166.8.233",
+				"http://csgo-stats.com",
+				"http://*.overwolf.com",
+				"https://*.google-analytics.com"
+			]
+		},
+		"launch_events": [
+			{
+				"event": "GameLaunch",
+				"event_data": {
+					"game_ids": [77641]
+				},
+				"start_minimized": false
+			}
+		],
+	    "hotkeys" : {
+			"show_csgo_stats": {
+				"title": "Show CS:GO Stats in-game",
+				"action-type": "toggle",
+				"default": "Alt+F"
+			},
+			"share_csgo_stats": {
+				"title": "Share top players in chat",
+				"action-type": "custom",
+				"default": "Alt+S"
+			}
+		},
+		"windows": {
+			"index": {
+				"file": "index.html",
+				"transparent": true,
+				"resizable": false,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 800,
+					"height": 480
+				},
+				"start_position": {
+					"Top": 240,
+					"Left": 500
+				}
+			},
+			"notice": {
+				"file": "notice.html",
+				"transparent": true,
+				"resizable": false,
+				"clickthrough": true,
+				"show_in_taskbar": false,
+				"in_game_only": true,
+				"size": {
+					"width": 320,
+					"height": 100
+				},
+				"start_position": {
+					"Top": 60,
+					"Left": 60
+				}
+			}
+		}
+	}
+}

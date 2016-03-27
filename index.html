@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CS:GO Stats</title>
+	<link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,400,400italic,500,700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body class="app-index app-loading">
+
+<div id="app-wrap">
+
+<div id="loading-screen">
+	<svg><use xlink:href="#i-logo" /></svg>
+	<img src="img/cloud9.png" alt="">
+</div>
+
+<div id="wrap">
+
+<svg id="app-logo"><use xlink:href="#i-logo" /></svg>
+
+<div id="window-controls" class="button-group">
+	<button id="feedback" class="button opaque">?</button>
+	<button data-section-open="options" class="button opaque"><svg><use xlink:href="#i-settings" /></svg></button>
+	<button id="minimize" class="button opaque"><svg><use xlink:href="#i-minimize" /></svg></button>
+	<button id="close" class="button opaque"><svg><use xlink:href="#i-x" /></svg></button>
+</div>
+
+<div id="home">
+	<p>Welcome to CS:GO Stats. This app will reveal the statistics of your opponent team as well as of your teammates with only one click.</p>
+	<p>Press <kbd class="hotkey-show"></kbd> while in-game to view the players' stats!</p>
+	<!-- <p><a href="steam://rungameid/730" class="button">Start CS:GO</a></p> -->
+</div>
+
+<ul id="links">
+	<li class="video">
+		<p class="soon">(coming soon)</p>
+
+		<span>
+			<svg><use xlink:href="#i-video" /></svg>
+			<b>Video<br> Tutorial</b>
+		</span>
+	</li>
+	<li class="website">
+		<a href="http://csgo-stats.com/" target="_blank">
+			<span>
+				<svg><use xlink:href="#i-website" /></svg>
+				<b>Official<br> Website</b>
+			</span>
+		</a>
+	</li>
+	<li class="help">
+		<a href="http://forums.overwolf.com/index.php?/topic/5962-csgo-stats-zeroing-in-on-the-competition/" target="_blank">
+			<span>
+				<svg><use xlink:href="#i-help" /></svg>
+				<b>Help</b>
+			</span>
+		</a>
+	</li>
+	<li class="invite">
+		<a href="http://csgo-stats.com/about-market/" target="_blank">
+			<span>
+				<b>Invite your friends to use CS:GO Stats and win prizes!</b>
+			</span>
+		</a>
+	</li>
+</ul>
+
+<div id="options">
+	<ul class="navigation">
+		<li data-section-open="home">Home</li>
+		<li data-section-open="players">Players</li>
+		<li>Settings</li>
+	</ul>
+	<form action="options">
+		<label class="option checkbox">
+			<p>Notify when stats are ready:</p>
+			<input type="checkbox" name="multiple-notice" checked>
+			<i><i></i></i>
+		</label>
+		<label class="option checkbox">
+			<p>Notify when a player joins:</p>
+			<input type="checkbox" name="player-notice" checked>
+			<i><i></i></i>
+		</label>
+		<label class="option option-hotkey option-hotkey-show"></label>
+		<label class="option option-hotkey option-hotkey-share"></label>
+		<div class="auth-user"></div>
+	</form>
+</div>
+
+<div id="players" data-status="loading">
+	<div class="teams">
+		<div class="team ct">
+			<div class="header">
+				<p class="profile"></p>
+				<p data-sort="kdr"><svg><use xlink:href="#i-kdr" /></svg> K/D Ratio</p>
+				<p data-sort="kills"><svg><use xlink:href="#i-kills" /></svg> Kills</p>
+				<p data-sort="win_perc"><svg><use xlink:href="#i-trophy" /></svg> Win %</p>
+				<p data-sort="time_played"><svg><use xlink:href="#i-timer" /></svg> Play time</p>
+				<p><svg><use xlink:href="#i-weapon" /></svg> Fav. wpn</p>
+				<p class="website"></p>
+			</div>
+			<div class="players"></div>
+		</div>
+		<div class="team t">
+			<div class="header">
+				<p class="profile"></p>
+				<p data-sort="kdr"><svg><use xlink:href="#i-kdr" /></svg> K/D Ratio</p>
+				<p data-sort="kills"><svg><use xlink:href="#i-kills" /></svg> Kills</p>
+				<p data-sort="win_perc"><svg><use xlink:href="#i-trophy" /></svg> Win %</p>
+				<p data-sort="time_played"><svg><use xlink:href="#i-timer" /></svg> Play time</p>
+				<p><svg><use xlink:href="#i-weapon" /></svg> Fav. wpn</p>
+				<p class="website"></p>
+			</div>
+			<div class="players"></div>
+		</div>
+	</div>
+	<div class="no-players">
+		<h2>No players detected</h2>
+		<p>Join a match to view stats</p>
+	</div>
+	<div class="plugin-error">
+		<h2>Could not connect to CS:GO</h2>
+		<p>This could be because the Overwolf process doesn't have same rights as CS:GO process.</p>
+		<p>Either start Overwolf as admin, or dont start CS:GO as admin.</p>
+		<p><a href="http://google.com" target="_blank">Find out more here.</a></p>
+	</div>
+	<div class="progress">
+		<h2>Loading</h2>
+		<p class="percent">0%</p>
+		<div class="bar-cont"><div class="bar"></div></div>
+	</div>
+	<footer>
+		<p class="hotkeys">Press <kbd class="hotkey-show"></kbd> to toggle. <kbd class="hotkey-share"></kbd> to share in chat</p>
+	</footer>
+</div>
+
+<p id="skins-market"><a href="http://csgo-stats.com/about-market/" target="_blank">Get epic skins, <b>FREE!</b></a></p>
+
+<p id="cloud9"><a href="http://cloud9.gg/" target="_blank">In collaboration with<img src="img/cloud9.png" alt=""></a></p>
+
+<div id="site-cont">
+	<button class="button small opaque red" id="site-close"><svg class="left"><use xlink:href="#i-left" /></svg> Back</button>
+	<iframe id="site"></iframe>
+</div>
+
+</div><!-- /#wrap -->
+</div><!-- /#app-wrap -->
+
+<script id="tpl-options-hotkey-show" type="x-tmpl-mustache">
+<p>Show/hide app hotkey:</p>
+<a href="overwolf://settings/hotkeys#show_csgo_stats" class="button hotkey-show" data-tip="Rebind app show/hide hotkey" data-hor="left" data-vert="top">{{.}}</a>
+</script>
+
+<script id="tpl-options-hotkey-share" type="x-tmpl-mustache">
+<p>Share stats hotkey:</p>
+<a href="overwolf://settings/hotkeys#share_csgo_stats" class="button hotkey-share" data-tip="Rebind hotkey for sharing stats in chat" data-hor="left" data-vert="top">{{.}}</a>
+</script>
+
+<script id="tpl-user" type="x-tmpl-mustache">
+<p>Your profile:</p>
+{{#profile}}
+	<a href="{{{url}}}" target="_blank"><img src="https:{{{avatar}}}_medium.jpg" class="avatar" />{{personaname}}</a>
+{{/profile}}
+</script>
+
+<script id="tpl-player" type="x-tmpl-mustache">
+<div class="player{{#is_user}} user{{/is_user}}{{#is_private}} private{{/is_private}}" id="player-{{steamid}}">
+	{{#profile}}
+		<p class="profile"><img src="https:{{{avatar}}}_medium.jpg" class="avatar" /><b class="name">{{personaname}}</b></p>
+	{{/profile}}
+	{{#is_private}}
+		<p>Stats unavailable — Private account</p>
+	{{/is_private}}
+	{{#stats}}
+		<p class="stat kdr">{{kdr}}</p>
+		<p class="stat kills">{{kills}}</p>
+		<p class="stat win_perc">{{win_perc}}</p>
+		<p class="stat time_played">{{time_played}}</p>
+		<p class="weapon" data-tip>
+			<svg><use xlink:href="#i-{{fav_weapon.name}}" /></svg>
+			<span data-tip-content class="weapon-tip"><b>{{fav_weapon.title}}:</b> {{fav_weapon.kills}} kills, {{fav_weapon.perc}}% accuracy</span>
+		</p>
+	{{/stats}}
+	{{#profile}}
+		<p class="website"><button data-url="{{{profile.steamid}}}" class="view-site" data-tip="View more stats" data-hor="right"><svg><use xlink:href="#i-viewstats" /></svg></button></p>
+	{{/profile}}
+</div>
+</script>
+
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-65732302-2', {
+		'cookieDomain': 'none'
+	});
+
+	ga('set', 'checkProtocolTask', null);
+	ga('send', 'pageview');
+</script>
+
+<script src="js/libs.js"></script>
+<script src="js/core.js"></script>
+
+<script>UserVoice=window.UserVoice||[];(function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='https://widget.uservoice.com/oLRt7CsfXIDEJgs2HmQ.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})();</script>
+
+<embed id="plugin" type="application/x-csgo-plugin" width="0" height="0"></embed>
+
+</body>
+</html>
